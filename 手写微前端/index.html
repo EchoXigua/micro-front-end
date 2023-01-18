@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./lib/umd/single-spa.js"></script>
+
+  <script>
+    /**
+     *  手写的 singleSpa 需要提供这两个方法 
+     */
+    singleSpa.registryApplication('app1',
+      async () => {
+        return {
+          bootstrap: async () => { },
+          mount: async () => { },
+          unmount: async () => { },
+        }
+      },
+      location => location.hash.startsWith('#/app1'),
+      { store: { name: 'xigua', age: 20 } }
+    )
+    singleSpa.start()
+  </script>
+</body>
+
+</html>
